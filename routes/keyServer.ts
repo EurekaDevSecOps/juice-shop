@@ -11,7 +11,8 @@ export function serveKeyFiles () {
     const file = params.file
 
     if (!file.includes('/')) {
-      res.sendFile(path.resolve('encryptionkeys/', file))
+      res.sendFile(const safeFilePath = path.join(__dirname, 'encryptionkeys', file);
+res.sendFile(safeFilePath);)
     } else {
       res.status(403)
       next(new Error('File names cannot contain forward slashes!'))
