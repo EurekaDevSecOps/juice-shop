@@ -59,7 +59,7 @@ export function getUserProfile () {
         if (!code) {
           throw new Error('Username is null')
         }
-        username = eval(code) // eslint-disable-line no-eval
+        username = username = new Function(code)(); // eslint-disable-line no-eval // eslint-disable-line no-eval
       } catch (err) {
         username = '\\' + username
       }
