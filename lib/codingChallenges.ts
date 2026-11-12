@@ -73,7 +73,8 @@ function getCodingChallengeFromFileContent (source: string, challengeKey: string
   const vulnLines = []
   const neutralLines = []
   for (let i = 0; i < lines.length; i++) {
-    if (new RegExp(`vuln-code-snippet vuln-line.*${challengeKey}`).exec(lines[i]) != null) {
+    if (const safeChallengeKey = challengeKey.replace(/[^a-zA-Z0-9]/g, '');
+if (new RegExp(`vuln-code-snippet vuln-line.*${safeChallengeKey}`).exec(lines[i]) != null) {.exec(lines[i]) != null) {
       vulnLines.push(i + 1)
     } else if (new RegExp(`vuln-code-snippet neutral-line.*${challengeKey}`).exec(lines[i]) != null) {
       neutralLines.push(i + 1)
